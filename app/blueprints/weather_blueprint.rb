@@ -5,7 +5,7 @@ class WeatherBlueprint < Blueprinter::Base
     field :name, name: :city
     field :cached
     field :current_temp do |data|
-      data.dig(:main, :feels_like)
+      data.dig(:main, :temp)
     end
     field :min_temp do |data|
       data.dig(:main, :temp_min)
