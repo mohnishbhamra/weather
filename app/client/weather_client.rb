@@ -11,7 +11,13 @@ class WeatherClient
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = (url.scheme == 'https')
     request = Net::HTTP::Get.new(url.request_uri)
-    response = http.request(request)
+    begin
+      response = http.request(request)
+    rescue SocketError=>e
+      Rails.logger.error("Error fetching weather data: #{e.message}")
+      return nil
+    end
+
     Rails.logger.debug("we got response from weather service - #{response.body}")
     if response.code == '200'
       JSON.parse(response.body)
