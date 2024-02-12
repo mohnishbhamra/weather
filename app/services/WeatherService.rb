@@ -7,7 +7,7 @@ class WeatherService
   end
 
   def getWeather
-    WeatherClient.getWeather(@zipcode)
+    CacheUtil.read_or_execute(@zipcode, -> { WeatherClient.getWeather(@zipcode) })
   end
 
 end
