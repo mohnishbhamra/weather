@@ -7,7 +7,8 @@ class WeatherService
   end
 
   def getWeather
-    CacheUtil.read_or_execute(@zipcode, -> { WeatherClient.getWeather(@zipcode) })
+    weather_data  = CacheUtil.read_or_execute(@zipcode, -> { WeatherClient.getWeather(@zipcode) })
+    WeatherBlueprint.render_as_hash(weather_data, view: :summary)
   end
 
 end

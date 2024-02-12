@@ -4,7 +4,10 @@
   <title>Weather Information</title>
 </head>
 <body>
-<h1>Weather Information for <%= @weather["name"] %></h1>
-<p>Temperature: <%= @weather.dig("main","temp") %>°C</p>
+<h1>Weather Information for <%= @weather[:city] %></h1>
+<p>Temperature: <%= @weather[:current_temp] %>°C</p>
+<p>Min Temperature: <%= @weather[:min_temp] %>°C</p>
+<p>Max Temperature: <%= @weather[:max_temp] %>°C</p>
+<p>Is coming from cache: <%= @weather[:cached] %></p>
 </body>
 </html>
