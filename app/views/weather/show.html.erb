@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather Information</title>
+</head>
+<body>
+<h1>Weather Information for <%= @weather["name"] %></h1>
+<p>Temperature: <%= @weather.dig("main","temp") %>°C</p>
+</body>
+</html>

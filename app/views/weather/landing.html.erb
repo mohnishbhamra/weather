@@ -1,0 +1,17 @@
+<!-- app/views/weather/landing.html.erb -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather App</title>
+</head>
+<body>
+<h1>Welcome to the Weather App</h1>
+<p>Enter your ZIP code to get the weather:</p>
+<%= form_tag('/weather', method: :get) do %>
+  <%= label_tag(:zipcode, 'ZIP code:') %>
+  <%= text_field_tag(:zipcode) %>
+  <%= submit_tag('Get Weather') %>
+<% end %>
+</body>
+</html>
